@@ -4,6 +4,7 @@ var cron = require('node-cron');
 const axios = require('axios');
 
 cron.schedule('1 * * * *', async () => {
+    console.log('hello');
     await axios.get(process.env.Business)
     .then((res) =>{ console.log(res.data.message)});
     await axios.get(process.env.Sports)
