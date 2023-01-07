@@ -3,7 +3,7 @@ require('dotenv').config();
 var cron = require('node-cron');
 const axios = require('axios');
 
-cron.schedule('* */2 * * *', async () => {
+cron.schedule('1 */2 * * *', async () => {
     console.log('hello');
     await axios.get(process.env.Business)
     .then((res) =>{ console.log(res.data.message)});
