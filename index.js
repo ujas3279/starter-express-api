@@ -1,7 +1,21 @@
-const express = require('express')
-const app = express()
-app.all('/', (req, res) => {
-    console.log("Just got a request!")
-    res.send('Yo!')
-})
-app.listen(process.env.PORT || 3000)
+require('dotenv').config();
+
+var cron = require('node-cron');
+const axios = require('axios');
+
+cron.schedule('2 * * *', async () => {
+    await axios.get(process.env.Business)
+    .then((res) =>{ console.log(res.data.message)});
+    await axios.get(process.env.Sports)
+    .then((res) =>{ console.log(res.data.message)});
+    await axios.get(process.env.Entertainment)
+    .then((res) =>{ console.log(res.data.message)});
+    await axios.get(process.env.General)
+    .then((res) =>{ console.log(res.data.message)});
+    await axios.get(process.env.Health)
+    .then((res) =>{ console.log(res.data.message)});
+    await axios.get(process.env.Technology)
+    .then((res) =>{ console.log(res.data.message)});
+    await axios.get(process.env.Science)
+    .then((res) =>{ console.log(res.data.message)});
+});
